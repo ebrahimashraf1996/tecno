@@ -1,0 +1,27 @@
+      Front part
+        if ($list->name_ar == 'منتجاتنا' || $list->name_en == 'Products') {
+            foreach ($products as $product) {
+                <a href="{{route('admin.products.show', $product->id)}}">$product->name(langFromScopeSelectioninsideModel)</a>
+            }
+        }
+
+
+
+     Site route part
+        Route::get('show/{id}', 'ProductsController@show')->name('admin.products.show');
+
+
+     front products controller logic
+        public function show($id) {
+            $product = Product::find($id);
+            if(!$product) {
+                return false;
+            }
+            return view('dashboard.products.show', compact('product'));
+        }
+
+
+if ($section->photo )
+cutter -> hidden
+
+name-content-photo
