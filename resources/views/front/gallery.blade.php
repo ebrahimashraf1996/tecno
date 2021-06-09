@@ -7,16 +7,14 @@
     @if(isset($photos) && $photos->count() > 0)
         <!--Start of gallery-->
         <section class="gallery wow" style="margin-bottom: 20px;">
-            <div class="text-center wow fadeInUp">
+            <div class="text-center wow fadeIn gall-icon">
                 <h1>{{__('messages.gallery')}}
                 </h1>
-                <div class="cutter">
-                    <div class="cut2"></div>
-                    <div class="cut1"></div>
-                    <div class="cut2"></div>
+                {{--                            line heart Here--}}
+                <div class="line2" style="width: 200px">
                 </div>
             </div>
-            <div class="container wow fadeInLeft">
+            <div class="container wow fadeIn">
                 <div class="row">
                     <div class='list-group gallery'>
                         @foreach($photos as $photo)
@@ -24,8 +22,7 @@
                                 <a class="thumbnail fancybox" rel="ligthbox"
                                    href="{{$photo->photo}}">
                                     <img class="img-responsive" alt="Gallery Image"
-                                         src="{{$photo->photo}}" height="270"/>
-
+                                         src="{{$photo->photo}}" style="height: 252px;"/>
                                 </a>
                             </div> <!-- col-6 / end -->
                         @endforeach

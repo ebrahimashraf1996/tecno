@@ -52,6 +52,8 @@ class CatalogController extends Controller
             Catalog::create([
                 'title_ar' => $request->title_ar,
                 'title_en' => $request->title_en,
+                'content_ar' => $request->content_ar,
+                'content_en' => $request->content_en,
                 'is_active' => $request->is_active,
                 'photo' => $fileName,
                 'pdf' => $PDF_fileName,

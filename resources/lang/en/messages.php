@@ -32,13 +32,7 @@ return [
     'warranty' => 'TechnoWarranty',
 
 
-
-
-
-
-
-
-
+    'download' => 'Download',
 
 
     'thanks' => 'Thanks For Texting us :)',

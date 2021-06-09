@@ -91,6 +91,10 @@
                                                                    class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">
                                                                     {{$product->is_active == 1 ? 'إالغاء تفعيل' : 'تفعيل'}}
                                                                 </a>
+                                                                <a href="{{route('admin.products.show.images',$product -> id)}}"
+                                                                   class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                    الصور
+                                                                </a>
 
 
                                                             </div>

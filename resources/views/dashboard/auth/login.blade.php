@@ -1,5 +1,7 @@
 @extends('layouts.login')
-
+@section('title')
+    الدخول للوحة التحكم
+    @endsection
 @section('content')
 
     <section class="flexbox-container">

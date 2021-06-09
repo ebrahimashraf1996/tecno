@@ -121,8 +121,9 @@ class LargeSectionsController extends Controller
                 return redirect()->route('admin.large.sections')->with(['error' => 'هذا القسم غير موجود ']);
 
             // delete photo from Folder
-            if (str_ends_with($large_section->photo, 'g'))
-            deletePhotos($large_section->photo);
+            if (str_ends_with($large_section->photo, '.jpg') || str_ends_with($large_section->photo, '.png') || str_ends_with($large_section->photo, '.jpeg')) {
+                deletePhotos($large_section->photo);
+            }
 
             // delete row from Table
             $large_section->delete();
@@ -159,10 +160,10 @@ class LargeSectionsController extends Controller
             $large_section = LargeSection::find($id);
 
             if (!$large_section) {
-                return redirect()->route('admin.large.sections')->with(['error' => 'هذه القسم غير موجود']);
+                return redirect()->route('admin.large.sections')->with(['error' => 'هذا القسم غير موجود']);
             }
 
-            if (str_ends_with($large_section->photo, 'g') ) {
+            if (str_ends_with($large_section->photo, '.jpg') || str_ends_with($large_section->photo, '.png') || str_ends_with($large_section->photo, '.jpeg')) {
                 deletePhotos($large_section->photo);
             }
             $large_section->update([

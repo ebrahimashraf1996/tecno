@@ -38,7 +38,5 @@ class LargeSection extends Model
     public function  getPhotoAttribute($val){
         return ($val !== null) ? asset('assets/images/largeSections/' . $val) : "";
     }
-    public function smallSections() {
-        return $this->hasMany(SmallSection::class, 'large_section_id');
-    }
+
 }

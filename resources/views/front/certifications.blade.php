@@ -9,29 +9,45 @@
     <!--start of services-->
     <section class="services-page text-center">
         <div class="container wow">
-            <div class="row wow fadeInRight">
+
                 @if(isset($certification_Ps) && $certification_Ps->count() > 0)
                     @foreach($certification_Ps as $item)
+                    <div class="row wow fadeIn" style="background-color: #d4d4d4;">
                         <h2>{{$item->title}}</h2>
-                        <div class="cutter">
-                            <div class="cut2"></div>
-                            <div class="cut1"></div>
-                            <div class="cut2"></div>
-                        </div>
+                        {{--                            line  Here--}}
+                        <div class="line2" style="background: #2a002f">
+                            </div>
                         <p class="services1"><b>
                                 {{$item->content}}
                             </b></p>
+                        @if($certification_Ps->count() > 1)
+
+                            <div class="line">
+
+                            </div>
+
+                        @endif
+                    </div>
                     @endforeach
                 @endif
 
-            </div>
 
-            <div class="row wow fadeInLeft">
+
+            <div class="row wow fadeIn" style="margin-top: 10px">
+                <div><h2>{{__('messages.certifications')}}</h2></div>
+                {{--                            line heart Here--}}
+                <div class="line2" style="background: #2a002f">
+                </div>
+                <br>
+
                 @if(isset($certification_items) && $certification_items->count() > 0)
                     @foreach($certification_items as $item)
-                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="col-sm-6 col-xs-12 {{$certification_items->count() < 2 ? 'col-md-12' : 'col-md-6'}}">
                             <div class="certimg">
-                                <img src="{{$item->photo}}" class="">
+                                <a href="{{$item->photo}}" target="_blank">
+                                    <img src="{{$item->photo}}" style="width: auto">
+                                </a>
+
                             </div>
                             <div class="service">
                                 <h3>{{$item->title}} </h3>

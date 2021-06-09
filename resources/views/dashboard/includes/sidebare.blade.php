@@ -6,7 +6,7 @@
             <li class="nav-item"><a href=""><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main" style="font-size: 14px"> الصور الخاصة بال Slider  </span>
                     <span
-                        class="badge badge badge-primary badge-pill float-right mr-2">{{\App\Models\GalleryImage::count()}}</span>
+                        class="badge badge badge-primary badge-pill float-right mr-2">{{\App\Models\SliderImage::count()}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class=""><a class="menu-item" href="{{route('admin.slider.images')}}"
@@ -20,7 +20,7 @@
 
 
             <li class="nav-item"><a href=""><i class="la la-group"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main"> الأقسام الرئيسية  </span>
+                    <span class="menu-title" data-i18n="nav.dash.main"> الأقسام الرئيسية 1 </span>
                     <span
                         class="badge badge badge-primary badge-pill float-right mr-2">{{\App\Models\LargeSection::count()}}</span>
                 </a>
@@ -36,17 +36,18 @@
             </li>
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الأقسام الفرعية  </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">الأقسام الرئيسية 2  </span>
                     <span
-                        class="badge badge badge-primary badge-pill float-right mr-2">{{\App\Models\SmallSection::count()}}</span>
+                        class="badge badge badge-primary badge-pill float-right mr-2">{{\App\Models\SecondSection::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class=""><a class="menu-item" href="{{route('admin.small.sections')}}"
+                    <li class=""><a class="menu-item" href="{{route('admin.second.sections')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="{{route('admin.small.sections.create')}}"
-                           data-i18n="nav.dash.crypto">أضافة
-                            قسم فرعي جديد </a>
+                    <li><a class="menu-item" href="{{route('admin.second.sections.create')}}"
+                           data-i18n="nav.dash.crypto">
+                            أضافة قسم رئيسي جديد
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -62,6 +63,21 @@
                     </li>
                     <li><a class="menu-item" href="{{route('admin.products.create')}}" data-i18n="nav.dash.crypto">إضافة
                             منتج </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">اعلانات المنتجات  </span>
+                    <span
+                        class="badge badge badge-success  badge-pill float-right mr-2">{{\App\Models\ProductAd::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class=""><a class="menu-item" href="{{route('admin.ads')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.ads.create')}}" data-i18n="nav.dash.crypto">إضافة
+                            اعلان </a>
                     </li>
                 </ul>
             </li>

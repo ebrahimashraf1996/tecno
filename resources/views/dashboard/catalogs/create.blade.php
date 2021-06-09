@@ -122,6 +122,36 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> المحتوي بالعربية
+                                                            </label>
+                                                            <textarea type="text" id="name"
+                                                                      class="form-control height-150"
+                                                                      placeholder=" "
+                                                                      name="content_ar"
+                                                            >{{old('content_ar')}}</textarea>
+                                                            @error("content_ar")
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> المحتوي بالإنجليزية
+                                                            </label>
+                                                            <textarea type="text" id="name"
+                                                                      class="form-control height-150"
+                                                                      placeholder="  "
+                                                                      name="content_en"
+                                                            >{{old('content_en')}}</textarea>
+                                                            @error("content_en")
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="row">
                                                     <div class="col-md-6">

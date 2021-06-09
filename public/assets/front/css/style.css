@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo:600');
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     margin: 0px;
     padding: 0px;
@@ -24,7 +26,7 @@ header .social-data {
     background-color: #2a002f;
     padding: 15px 0px;
     color: #ddd;
-    direction: rtl;
+    direction: ltr;
 }
 
 /*header .social-data .social-mail{*/
@@ -256,7 +258,7 @@ nav.navbar-default ul.navbar-nav {
 
 /*start of about us*/
 .about-us {
-    padding: 60px 0px;
+    padding-top: 25px;
 }
 
 .about-us .cutter .cut1 {
@@ -364,7 +366,7 @@ nav.navbar-default ul.navbar-nav {
         border-left: 7px solid #2D3239;
         -webkit-transform: skew(-30deg);
         transform: skew(-30deg);
-        padding: 60px 0px;
+        padding: 65px 0px;
     }
 }
 
@@ -472,7 +474,7 @@ nav.navbar-default ul.navbar-nav {
 
 /*start of footer*/
 footer {
-    background-color: #333;
+    background-color: #2a002f;
     padding: 50px 0px;
     color: #fff;
 }
@@ -837,8 +839,7 @@ footer h3 {
 }
 
 .about-img img {
-    margin: 5em auto 0em;
-
+    display: inline-block;
 }
 
 /*----------------------- Preloader -----------------------*/
@@ -972,7 +973,6 @@ section.catalog div.pdf-file a {
 /*}*/
 
 
-
 /*Num2*/
 
 
@@ -982,8 +982,8 @@ section.catalog div.pdf-file a {
     border: 1px solid #a5a2a2;
     position: absolute;
     background-color: rgba(42, 0, 47, .8);
-    left: 47.5%;
-    bottom: 20px;
+    left: 46%;
+    bottom: -20%;
     border-radius: 50px;
     cursor: pointer;
     z-index: 1000;
@@ -1025,18 +1025,321 @@ section.catalog div.pdf-file a {
     }
 }
 
+@media (max-width: 767px) {
+    #scroll-down {
+        height: 50px;
+        width: 50px;
+        left: 44.3%;
+        bottom: -20%;
 
-/*Num 3*/
+    }
+
+}
+
+.icon_line:before,
+.icon_line:after {
+    content: "____________";
+    color: #737c85;
+    position: relative;
+    bottom: 6px;
+}
+
+
+.catalog i, .gall-icon i, .contact-keep i, .footer-about i, .footer-menu i, .footer-contact i {
+    margin-bottom: 30px;
+    color: #fff;
+    background-color: #047b33;
+    font-size: 24px;
+    width: 40px;
+    height: 63px;
+    line-height: 65px;
+    text-align: center;
+}
+
+
+.icon_line {
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+.icon_line i {
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+}
+
+.certification-icon i {
+    margin-bottom: 20px;
+}
+
+.cata-icon i {
+    margin-top: 20px;
+}
+
+
+.lang-link {
+    color: white;
+}
+
+.lang-link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#services_sec {
+}
+
+.service_side {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.single_service {
+    width: 350px;
+    height: 250px;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+
+
+.service_s {
+    font-size: 19px;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.show_more {
+    padding-left: 0px;
+    padding-top: 30px;
+}
+
+.open_close {
+    width: 100%;
+    background: rgba(30, 52, 91, 0.9);
+    margin-top: 180px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.co_p {
+    color: #fff;
+    padding: 0 30px;
+}
+
+.line {
+    width: 100%;
+    height: 7px;
+    background: #047b33;
+    margin-top: 70px;
+    border-radius: 5px;
+}
+
+
+.line2 {
+    width: 150px;
+    height: 7px;
+    background: #047b33;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+
+.facts {
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    padding: 0;
+
+}
+
+.parallay-overlay {
+    background-color: rgba(6, 32, 51, .8);
+    padding: 30px 0px;
+    height: 100%;
+}
+
+.facts_h {
+    color: #fff;
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 40px;
+}
+
+.counter {
+    font-size: 30px;
+    color: #fff;
+}
+
+.count_p {
+    font-size: 20px;
+    color: #fff;
+}
+
+#count_co {
+    color: #fff;
+}
+
+.counters-item i {
+    color: #fff;
+    font-size: 3em;
+    border: 1px solid #737c85;
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    padding-top: 40px;
+}
+
+.first-slide {
+    width: 100%;
+    height: 300px;
+}
+
+.warranty-photo-div {
+
+    margin-top: 120px
+}
+
+@media (max-width: 767px) {
+    .small-contact-div {
+        text-align: center;
+    }
+
+    .product_cover {
+        width: 100%;
+    }
+
+    .first-slide {
+        width: 327px;
+    }
+
+    .about-img img {
+        height: 300px;
+        width: 100%;
+    }
+
+    .warranty-photo-div {
+
+        margin-top: 20px
+    }
+
+}
+
+.flag {
+    width: 20px;
+    height: 15px;
+    padding-top: 2px;
+    padding-right: 5px;
+}
 
 
 
+.our-team {
+    padding: 30px 0 40px;
+    margin-bottom: 30px;
+    background-color: #f7f5ec;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    border: 2px #2a002f solid;
+    border-radius: 2px;
+}
 
+.our-team .picture {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    z-index: 1;
+    position: relative;
+}
 
+.our-team .picture::before {
+    content: "";
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    background-color: #2a002f;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.9;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+}
 
+.our-team:hover .picture::before {
+    height: 100%;
+}
 
+.our-team .picture::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #2a002f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 
+.our-team .picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+}
 
+.our-team:hover .picture img {
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
+}
 
+.our-team .title {
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+    text-transform: capitalize;
+}
 
+.our-team .social {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #2a002f;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .social {
+    bottom: 0;
+}
+
+.our-team .social li {
+    display: inline-block;
+}
+
+.our-team .social li a {
+    display: block;
+    padding: 10px;
+    font-size: 17px;
+    color: white;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.our-team .social li a:hover {
+    color: white;
+    background-color: #047b33;
+}
+.team-content {
+    height: 150px;
+}
 
 

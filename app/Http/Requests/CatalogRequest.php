@@ -26,6 +26,8 @@ class CatalogRequest extends FormRequest
         return [
             'title_ar' => 'required|max:500',
             'title_en' => 'required|max:500',
+            'content_ar' => 'required|max:2000',
+            'content_en' => 'required|max:2000',
             'photo' => 'required_without:id|mimes:jpg,jpeg,png',
             'pdf' => 'required_without:id|mimes:pdf',
         ];

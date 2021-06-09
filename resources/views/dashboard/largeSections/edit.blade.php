@@ -58,7 +58,7 @@
                                             <div class="row">
                                                 <div class="col-md-3">صورة القسم</div>
                                                 <div class="text-center col-md-6">
-                                                    @if(strpos($large_section->photo, '.jpg') || strpos($large_section->photo, '.png') || strpos($large_section->photo, '.jpeg'))<img style="width: 300px; height: 300px;" src="{{$large_section -> photo}}">@else لا يوجد @endif
+                                                    @if(str_ends_with($large_section->photo, '.jpg') || str_ends_with($large_section->photo, '.png') || str_ends_with($large_section->photo, '.jpeg'))<img style="width: 300px; height: 300px;" src="{{$large_section -> photo}}">@else لا يوجد @endif
                                                 </div>
                                                 <br><br><br>
                                                 <br><br><br>

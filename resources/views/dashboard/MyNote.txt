@@ -25,3 +25,17 @@ if ($section->photo )
 cutter -> hidden
 
 name-content-photo
+
+
+$wisely = SmallSection::all();
+$products = Product::all()l
+return view('dashboard.wisely', compact('wisely', 'products'));
+
+
+@foreach($wisely as $wise)
+<td> $wise->title  <td>
+<td> $wise-> photo  <td>
+<td> $wise-> content  <td>
+<td>  product{{Product::find($wise->product_id)}} <td>
+
+@endforeach

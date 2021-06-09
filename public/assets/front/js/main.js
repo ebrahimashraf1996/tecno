@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $("a").on('click', function(event) {
         if (this.hash !== "") {
@@ -10,6 +11,12 @@ $(document).ready(function(){
             });
         }
     });
+
+    $(".service_more").slideUp(10);
+
+
+
+
 });
 
 (function($) {
@@ -58,7 +65,15 @@ $(document).ready(function(){
     });
 
 
-    new WOW().init();
 
 });
 
+
+//Counter
+
+$(window).ready(function() {
+    $('.counter').counterUp({
+        delay: 5,
+        time:2000
+    });
+});

@@ -83,9 +83,9 @@ Route::group([
 
         ############################### End Slider Images Routs #####################################
 
-        ############################### start Large Sections Routs #####################################
+        ############################### start First Large Sections Routs #####################################
 
-        Route::group(['prefix' => 'large-sections'], function () {
+        Route::group(['prefix' => 'first-sections'], function () {
             Route::get('/','LargeSectionsController@index') -> name('admin.large.sections');
             Route::get('create','LargeSectionsController@create') -> name('admin.large.sections.create');
             Route::post('store','LargeSectionsController@store') -> name('admin.large.sections.store');
@@ -96,21 +96,22 @@ Route::group([
             Route::get('remove-photo/{id}', 'LargeSectionsController@removePhoto')->name('admin.large.sections.remove.photo');
         });
 
-        ############################### End Large Sections Routs #####################################
+        ############################### End First Large Sections Routs #####################################
 
-        ############################### start Small Sections Routs #####################################
+        ############################### start Second Large Sections Routs #####################################
 
-        Route::group(['prefix' => 'small-sections'], function () {
-            Route::get('/','SmallSectionsController@index') -> name('admin.small.sections');
-            Route::get('create','SmallSectionsController@create') -> name('admin.small.sections.create');
-            Route::post('store','SmallSectionsController@store') -> name('admin.small.sections.store');
-            Route::get('edit/{id}','SmallSectionsController@edit') -> name('admin.small.sections.edit');
-            Route::post('update/{id}','SmallSectionsController@update') -> name('admin.small.sections.update');
-            Route::get('delete/{id}','SmallSectionsController@destroy') -> name('admin.small.sections.delete');
-            Route::get('change-status/{id}', 'SmallSectionsController@changeStatus')->name('admin.small.sections.change.status');
+        Route::group(['prefix' => 'second-sections'], function () {
+            Route::get('/','SecondSectionController@index') -> name('admin.second.sections');
+            Route::get('create','SecondSectionController@create') -> name('admin.second.sections.create');
+            Route::post('store','SecondSectionController@store') -> name('admin.second.sections.store');
+            Route::get('edit/{id}','SecondSectionController@edit') -> name('admin.second.sections.edit');
+            Route::post('update/{id}','SecondSectionController@update') -> name('admin.second.sections.update');
+            Route::get('delete/{id}','SecondSectionController@destroy') -> name('admin.second.sections.delete');
+            Route::get('change-status/{id}', 'SecondSectionController@changeStatus')->name('admin.second.sections.change.status');
+            Route::get('remove-photo/{id}', 'SecondSectionController@removePhoto')->name('admin.second.sections.remove.photo');
         });
 
-        ############################### End Small Sections Routs #####################################
+        ############################### End Second Large Sections Routs #####################################
 
         ############################### start Footer Section Contacts Routs #####################################
 
@@ -150,9 +151,36 @@ Route::group([
             Route::post('update/{id}','ProductController@update') -> name('admin.products.update');
             Route::get('delete/{id}','ProductController@destroy') -> name('admin.products.delete');
             Route::get('change-status/{id}', 'ProductController@changeStatus')->name('admin.products.change.status');
+
+
+                            ###########  Start Product Images Routes ############
+            Route::get('images/{id}', 'ProductController@showImages')->name('admin.products.show.images');
+            Route::get('images/create/{id}','ProductController@addImages') -> name('admin.product.images.create');
+            Route::post('images/save','ProductController@saveImages') -> name('admin.product.images.save');
+            Route::post('images/store','ProductController@storeImages') -> name('admin.product.images.store');
+            Route::get('single-image/delete/{imageId}','ProductController@imageDestroy') -> name('admin.product.images.delete');
+            Route::get('single-image/change-status/{imageId}', 'ProductController@imageChangeStatus')->name('admin.product.images.change.status');
+                            ###########  End Product Images Routes ############
         });
 
         ############################### End Products Routs #####################################
+
+
+        ############################### start Product Ads Routs #####################################
+
+        Route::group(['prefix' => 'product-ads'], function () {
+            Route::get('/','ProductAdController@index') -> name('admin.ads');
+            Route::get('create','ProductAdController@create') -> name('admin.ads.create');
+            Route::post('store','ProductAdController@store') -> name('admin.ads.store');
+            Route::get('edit/{id}','ProductAdController@edit') -> name('admin.ads.edit');
+            Route::post('update/{id}','ProductAdController@update') -> name('admin.ads.update');
+            Route::get('delete/{id}','ProductAdController@destroy') -> name('admin.ads.delete');
+            Route::get('change-status/{id}', 'ProductAdController@changeStatus')->name('admin.ads.change.status');
+        });
+
+        ############################### End Product Ads Routs #####################################
+
+
 
 
         ############################### start Social Contacts Routs #####################################
@@ -271,6 +299,7 @@ Route::group([
 
 
 Auth::routes();
+Auth::routes(['register' => false]);
 
 
 

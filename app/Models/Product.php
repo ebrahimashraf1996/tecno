@@ -35,4 +35,12 @@ class Product extends Model
         return ($val !== null) ? asset('assets/images/products/' . $val) : "";
     }
 
+    public function ads() {
+        return $this->hasMany(ProductAd::class, 'product_id');
+    }
+
+    public function images() {
+        return $this->hasMany(ProductImage::class, 'product_id');
+    }
+
 }

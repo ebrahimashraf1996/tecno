@@ -5,39 +5,36 @@
 @section('content')
 
     <!--start of Warranty-->
-    <section class="about-us">
+    <section class="about-us" style="margin-top: 15px">
         <div class="container">
             @if(isset($warranties) && $warranties->count() >0)
                 @foreach($warranties as $warranty)
                     <div class="row wow">
-                        <div class="col-md-6 col-xs-12 wow fadeInLeft">
+                        <div class="col-md-6 col-xs-12 wow fadeIn text-center " style="margin-top: 25px">
                             <div class="about-data">
                                 <h2> {{$warranty->title}}</h2>
-                                <div class="cutter">
-                                    <div class="cut1"></div>
-                                    <div class="cut2"></div>
-                                </div>
+                                <div class="line2" style="width: 200px"></div>
 
-                                <p class="about2" style="font-size: 24px; font-family: Comic Sans MS,cursive;">
+
+                                <p class="about2" style="font-size: 24px; font-family: 'Times New Roman',serif;">
                                     {{$warranty->content}}
                                 </p>
 
                             </div>
                         </div>
-                        <div class="col-md-6 col-xs-12 wow fadeInRight">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5 col-xs-12 wow fadeIn warranty-photo-div">
                             <div class="about-img">
-                                <img src="{{$warranty->photo}}" width="400" class="img-responsive">
+                                <img src="{{$warranty->photo}}" height="350" width="100%" class="">
                             </div>
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8" style=" text-align: center; background: black; height: 1px">
-                        </div>
-                        <div class="col-md-2"></div>
+                    @if($warranties->count() > 1)
+                        <div class="line">
 
-                    </div>
+                        </div>
+                    @endif
 
                 @endforeach
             @endif

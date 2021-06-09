@@ -58,6 +58,8 @@
                                             <tr>
                                                 <th>العنوان بالعربية</th>
                                                 <th>العنوان بالأنجليزية</th>
+                                                <th>المحتوي بالعربية</th>
+                                                <th>المحتوي بالأنجليزية</th>
                                                 <th>ملف الكتالوج</th>
                                                 <th> صورة الكتالوج</th>
                                                 <th>الحالة</th>
@@ -72,8 +74,10 @@
                                                     <tr>
                                                         <td>{{$catalog -> title_ar}}</td>
                                                         <td>{{$catalog -> title_en}}</td>
+                                                        <td><div  style=" overflow: hidden; height: 80px; width: 200px">{{$catalog -> content_ar}}</div></td>
+                                                        <td><div  style=" overflow: hidden; height: 80px; width: 200px">{{$catalog -> content_en}}</div></td>
                                                         <td><a class="btn btn-primary"
-                                                               href="{{$catalog -> pdf}}">PDF</a></td>
+                                                               href="{{$catalog -> pdf}}">تحميل</a></td>
                                                         <td><img style="width: 150px; height: 100px;"
                                                                  src="{{$catalog -> photo}}"></td>
                                                         <td>{{$catalog -> getActive()}}</td>

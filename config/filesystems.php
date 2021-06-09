@@ -73,15 +73,27 @@ return [
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
-        'smallSections' => [
+        'secondSections' => [
             'driver' => 'local',
-            'root' => public_path('assets/images/smallSections'),
+            'root' => public_path('assets/images/secondSections'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'products' => [
             'driver' => 'local',
             'root' => public_path('assets/images/products'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+        'productImages' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/productImages'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+        'ads' => [
+            'driver' => 'local',
+            'root' => public_path('assets/images/ads'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],

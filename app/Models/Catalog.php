@@ -9,7 +9,7 @@ class Catalog extends Model
 {
     protected $table = "catalogs";
 
-    protected $fillable = ['title_ar', 'title_en',  'photo', 'pdf', 'is_active', 'created_at', 'updated_at'];
+    protected $fillable = ['title_ar', 'title_en', 'content_ar', 'content_en',  'photo', 'pdf', 'is_active', 'created_at', 'updated_at'];
 
 
     public function getActive(){
@@ -22,7 +22,9 @@ class Catalog extends Model
 
     public function scopeSelection($query){
         return $query -> select([
+            'id',
             'title_'. LaravelLocalization::getCurrentLocale().' as title',
+            'content_' . LaravelLocalization::getCurrentLocale() . ' as content',
             'photo',
             'pdf',
             'is_active'

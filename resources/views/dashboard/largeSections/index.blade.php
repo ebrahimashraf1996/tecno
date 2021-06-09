@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    عرض الأقسام الرئيسية
+     الأقسام الرئيسية 2
 @stop
 @section('content')
 
@@ -13,7 +13,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
                                 </li>
-                                <li class="breadcrumb-item active"> الأقسام الرئيسية
+                                <li class="breadcrumb-item active"> الأقسام الرئيسية - 1
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع الأقسام الرئيسية </h4>
+                                    <h4 class="card-title">جميع الأقسام الرئيسية - 1 </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
