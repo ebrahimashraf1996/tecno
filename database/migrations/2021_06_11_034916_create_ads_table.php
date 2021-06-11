@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductAdsTable extends Migration
+class CreateAdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductAdsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_ads', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title_ar');
             $table->string('title_en');
@@ -23,6 +23,8 @@ class CreateProductAdsTable extends Migration
             $table->boolean('is_active')->default(1);
             $table->integer('product_id')->unsigned()->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('offer_id')->unsigned()->nullable();
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +36,6 @@ class CreateProductAdsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_ads');
+        Schema::dropIfExists('ads');
     }
 }

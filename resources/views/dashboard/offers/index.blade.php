@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    الإعلانات
+    العروض
 @stop
 @section('content')
 
@@ -13,7 +13,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
                                 </li>
-                                <li class="breadcrumb-item active"> الإعلانات
+                                <li class="breadcrumb-item active"> العروض
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع الإعلانات </h4>
+                                    <h4 class="card-title">جميع العروض </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -47,68 +47,51 @@
                                     <div class="card-body card-dashboard">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <a href="{{route('admin.ads.create')}}"
-                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">إضافة اعلان</a>
+                                                <a href="{{route('admin.offers.create')}}"
+                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">إضافة عرض جديد</a>
                                             </div>
                                         </div>
                                         <table
-                                        class="table display nowrap table-striped table-bordered scroll-horizontal"  style="text-align: center">
+                                            class="table display nowrap table-striped table-bordered scroll-horizontal"  style="text-align: center">
                                             <thead class="">
                                             <tr>
                                                 <th>العنوان بالعربية </th>
                                                 <th> المحتوي بالعربية </th>
                                                 <th>العنوان بالأنجليزية </th>
                                                 <th> المحتوي بالأنجليزية </th>
-                                                <th>صورة الإعلان </th>
+                                                <th> صورة العرض </th>
                                                 <th>الحالة </th>
-                                                <th>اسم المعلن عنه </th>
-                                                <th>حالة المعلن عنه </th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody >
 
-                                            @isset($ads)
-                                                @foreach($ads as $ad)
+                                            @isset($offers)
+                                                @foreach($offers as $offer)
 
                                                     <tr>
-                                                        <td>{{$ad -> title_ar}}</td>
-                                                        <td><div  style=" overflow: hidden; height: 130px; width: 100px">{{$ad -> content_ar}}</div></td>
-                                                        <td>{{$ad -> title_en}}</td>
-                                                        <td><div  style=" overflow: hidden; height: 130px; width: 100px">{{$ad -> content_en}}</div></td>
-                                                        <td><img style="width: 150px; height: 100px;" src="{{$ad -> photo}}"></td>
-                                                        <td>{{$ad -> getActive()}}</td>
-                                                        @if($ad->product_id == null && $ad -> offer_id == null)
-                                                            <td>------</td>
-                                                        @elseif($ad->product_id == null)
-                                                            <td>{{ $ad -> offer['title']}}</td>
-                                                        @else
-                                                            <td>{{ $ad -> product['title']}}</td>
-                                                        @endif
-
-                                                        @if($ad->product_id == null && $ad -> offer_id == null)
-                                                            <td>------</td>
-                                                        @elseif($ad->product_id == null)
-                                                            <td>{{ $ad -> offer->getActive()}}</td>
-                                                        @else
-                                                            <td>{{ $ad -> product->getActive()}}</td>
-                                                        @endif
-
+                                                        <td>{{$offer -> title_ar}}</td>
+                                                        <td><div  style=" overflow: hidden; height: 80px; width: 200px">{{$offer -> content_ar}}</div></td>
+                                                        <td>{{$offer -> title_en}}</td>
+                                                        <td><div  style=" overflow: hidden; height: 80px; width: 200px">{{$offer -> content_en}}</div></td>
+                                                        <td><img style="width: 150px; height: 100px;" src="{{$offer -> photo}}"></td>
+                                                        <td>{{$offer -> getActive()}}</td>
                                                         <td>
 
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('admin.ads.edit',$ad -> id)}}"
+                                                                <a href="{{route('admin.offers.edit',$offer -> id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
 
-                                                                <a href="{{route('admin.ads.delete',$ad -> id)}}"
+                                                                <a href="{{route('admin.offers.delete',$offer -> id)}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
 
-                                                                <a href="{{route('admin.ads.change.status',$ad -> id)}}"
+                                                                <a href="{{route('admin.offers.change.status',$offer -> id)}}"
                                                                    class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">
-                                                                    {{$ad->is_active == 1 ? 'إالغاء تفعيل' : 'تفعيل'}}
+                                                                    {{$offer->is_active == 1 ? 'إالغاء تفعيل' : 'تفعيل'}}
                                                                 </a>
+
 
                                                             </div>
                                                         </td>

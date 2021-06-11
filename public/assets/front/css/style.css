@@ -1097,7 +1097,7 @@ section.catalog div.pdf-file a {
 }
 
 .single_service {
-    width: 350px;
+    width: 100%;
     height: 250px;
     display: inline-block;
     background-size: 100% 100%;

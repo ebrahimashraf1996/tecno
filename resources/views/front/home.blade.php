@@ -148,12 +148,16 @@
 
 
     <!-- Service Side  wisely -->
-    <section style="background-image: url({{asset('assets/front/images/bgbgbg.jpg')}}); background-repeat: no-repeat; background-size: 100% 100%">
+{{--    <section style="background-image: url({{asset('assets/front/images/bgbgbg.jpg')}}); background-repeat: no-repeat; background-size: 100% 100%">--}}
+    <section>
         <div class="container" id="services_sec">
             <div class="row" style="margin-top: 50px">
 
                 @if(isset($ads))
-                    @foreach($ads as $ad)
+                    @foreach($ads as $key => $ad)
+                        @if ($key % 3 == 0)
+            <div class="row">
+                @endif
                         <div class="service_side wow fadeIn col-md-4 col-sm-12 col-xs-12" data-wow-duration="2s">
                             <div id="{{'services_item_'. $ad->id}}" class="single_service"
                                  style="background-image: url({{$ad->photo}})">
@@ -167,9 +171,15 @@
                                         </div>
                                         <div id={{'service_more_'.$ad->id}} class="show_more">
                                             <p class="co_p">{{$ad->content}},
-                                                @if($ad->product_id != null)<a
-                                                    href="{{route('site.product', $ad->product_id)}}">read
-                                                    more</a>@endif
+                                                @if($ad->product_id != null)
+                                                    <a href="{{route('site.product', $ad->product_id)}}">
+                                                        read more
+                                                    </a>
+                                                @elseif($ad->offer_id != null)
+                                                    <a href="{{route('site.offer', $ad->offer_id)}}">
+                                                        read more
+                                                    </a>
+                                                @endif
                                             </p>
 
                                         </div>
@@ -180,6 +190,9 @@
 
                             </div>
                         </div>
+                        @if ($key % 3 == 2)
+</div>
+                        @endif
 
                     @endforeach
                 @endif
@@ -193,8 +206,6 @@
         </div>
     </section>
     <!-- //Service Side wisely -->
-
-
 
 
 

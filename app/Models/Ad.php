@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class ProductAd extends Model
+class Ad extends Model
 {
     //product_ads
-    protected $table = "product_ads";
+    protected $table = "ads";
 
 
-    protected $fillable = ['title_ar', 'title_en', 'content_ar', 'content_en', 'photo', 'product_id', 'is_active', 'created_at', 'updated_at'];
+    protected $fillable = ['title_ar', 'title_en', 'content_ar', 'content_en', 'photo', 'parent_status','product_id', 'offer_id', 'is_active', 'created_at', 'updated_at'];
 
 
     public function getActive()
@@ -23,6 +23,10 @@ class ProductAd extends Model
     {
         return $query->where('is_active', 1);
     }
+    public function scopeParentActive($query)
+    {
+        return $query->where('parent_status', 1);
+    }
 
     public function scopeSelection($query)
     {
@@ -32,6 +36,8 @@ class ProductAd extends Model
             'content_' . LaravelLocalization::getCurrentLocale() . ' as content',
             'photo',
             'product_id',
+            'offer_id',
+            'parent_status',
             'is_active',
         ]);
     }
@@ -45,6 +51,10 @@ class ProductAd extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
+    }
+    public function offer()
+    {
+        return $this->belongsTo(Offer::class, 'offer_id');
     }
 
 }

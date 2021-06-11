@@ -29,7 +29,7 @@
 
 <div class="preloader-wrapper">
     <div class="preloader">
-        <img src="{{asset('assets/front/images/TOlogo.jpg')}}" alt="loader">
+        <img src="{{asset('assets/front/images/logo.png')}}" alt="loader">
     </div>
 </div>
 

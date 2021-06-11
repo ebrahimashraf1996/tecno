@@ -33,6 +33,11 @@ Route::group([
     ################################### End Product ##################################
 
 
+    ################################### Start offer ##################################
+    Route::get('/offer/{id}', 'FrontController@offerShow')->name('site.offer');
+    ################################### End offer ##################################
+
+
 
     ################################### Start Certifications ##################################
     Route::get('/certifications', 'FrontController@certifications')->name('site.certifications');

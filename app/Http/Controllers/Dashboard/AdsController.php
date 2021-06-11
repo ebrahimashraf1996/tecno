@@ -3,31 +3,39 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdsRequest;
 use App\Http\Requests\ProductAdRequest;
+use App\Models\Ad;
+use App\Models\Offer;
 use App\Models\Product;
-use App\Models\ProductAd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class ProductAdController extends Controller
+class AdsController extends Controller
 {
     public function index()
     {
-        $ads = ProductAd::with(['product' => function ($q) {
-            $q->selection();
-        }])->get();
+        $ads = Ad::with([
+            'product' => function ($q) {
+                $q->selection();
+            },
+            'offer' => function ($q) {
+                $q->selection();
+            }
+        ])->get();
 
         return view('dashboard.ads.index', compact('ads'));
     }
 
     public function create()
     {
-        $products = Product::select('id', 'title_'.LaravelLocalization::getCurrentLocale() . ' as title')->get();
-        return view('dashboard.ads.create', compact('products'));
+        $products = Product::select('id', 'title_' . LaravelLocalization::getCurrentLocale() . ' as title')->active()->get();
+        $offers = Offer::select('id', 'title_' . LaravelLocalization::getCurrentLocale() . ' as title')->active()->get();
+        return view('dashboard.ads.create', compact('products', 'offers'));
     }
 
-    public function store(ProductAdRequest $request)
+    public function store(AdsRequest $request)
     {
         // validation by Small Sections Request
 
@@ -44,13 +52,21 @@ class ProductAdController extends Controller
         if ($request->has('photo')) {
             $fileName = uploadImage('ads', $request->photo);
         }
-
-        ProductAd::create([
+        if ($request->type == 0) {
+            $request->offer_id = null;
+            $request->product_id = null;
+        } elseif ($request->type == 1) {
+            $request->offer_id = null;
+        } elseif ($request->type == 2) {
+            $request->product_id = null;
+        }
+        Ad::create([
             'title_ar' => $request->title_ar,
             'title_en' => $request->title_en,
             'content_ar' => $request->content_ar,
             'content_en' => $request->content_en,
             'product_id' => $request->product_id,
+            'offer_id' => $request->offer_id,
             'is_active' => $request->is_active,
             'photo' => $fileName,
         ]);
@@ -61,24 +77,31 @@ class ProductAdController extends Controller
 
     public function edit($id)
     {
-        $products = Product::select('id', 'title_'.LaravelLocalization::getCurrentLocale() . ' as title')->get();
-        $ad = ProductAd::find($id);
+        $products = Product::active()->select('id', 'title_' . LaravelLocalization::getCurrentLocale() . ' as title')->get();
+        $offers = Offer::active()->select('id', 'title_' . LaravelLocalization::getCurrentLocale() . ' as title')->get();
+        $ad = Ad::find($id);
         if (!$ad)
             return redirect()->route('admin.ads')->with(['error' => 'هذا الإعلان غير موجود']);
 
-        return view('dashboard.ads.edit', compact('ad', 'products'));
+        if ($ad->parent_status != 1)
+            return redirect()->route('admin.ads')->with(['error' => 'برجاء تفعيل حالة المعلن عنه قبل اجراء أي تعديل علي الإعلان ']);
+
+
+        return view('dashboard.ads.edit', compact('ad', 'products', 'offers'));
     }
 
-    public function update(ProductAdRequest $request, $id)
+    public function update(AdsRequest $request, $id)
     {
         try {
-            // validation by Small Sections Update Request
+            // validation by Ads Request
 
             //Update DB
 
-            $ad = ProductAd::find($id);
+            $ad = Ad::find($id);
+
             if (!$ad)
                 return redirect()->route('admin.ads')->with(['error' => 'هذا الإعلان غير موجود ']);
+
 
             DB::beginTransaction();
 
@@ -88,6 +111,7 @@ class ProductAdController extends Controller
                 $request->request->add(['is_active' => 0]);
             else
                 $request->request->add(['is_active' => 1]);
+
 
 
             // Photo Update
@@ -101,8 +125,17 @@ class ProductAdController extends Controller
                 ]);
             }
 
+            if ($request->type == 0) {
+                $request->offer_id = null;
+                $request->product_id = null;
+            } elseif ($request->type == 1) {
+                $request->offer_id = null;
+            } elseif ($request->type == 2) {
+                $request->product_id = null;
+            }
 
-            $ad->update($request->except('_token', 'id', 'photo'));
+
+            $ad->update($request->except('_token', 'id', 'photo','type'));
 
 
             DB::commit();
@@ -119,7 +152,7 @@ class ProductAdController extends Controller
     {
         try {
             //get specific section
-            $ad = ProductAd::find($id);
+            $ad = Ad::find($id);
 
             // check if exists
             if (!$ad)
@@ -143,7 +176,7 @@ class ProductAdController extends Controller
     public function changeStatus($id)
     {
         try {
-            $ad = ProductAd::find($id);
+            $ad = Ad::find($id);
 
             if (!$ad) {
                 return redirect()->route('admin.ads')->with(['error' => 'هذا الإعلان غير موجود']);

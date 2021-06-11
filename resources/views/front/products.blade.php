@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('title')
-    Products
+    {{$product->title}}
 @endsection
 
 @section('content')

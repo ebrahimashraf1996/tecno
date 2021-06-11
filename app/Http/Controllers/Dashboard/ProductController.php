@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Ad;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
@@ -69,7 +70,9 @@ class ProductController extends Controller
 
             //Update DB
 
-            $product = Product::find($id);
+            $product = Product::with(['productAds' => function ($q) {
+                $q->selection();
+            }])->find($id);
             if (!$product)
                 return redirect()->route('admin.products')->with(['error' => 'هذا المنتج غير موجود ']);
 
@@ -94,6 +97,10 @@ class ProductController extends Controller
             }
 
             $product->update($request->except('_token', 'id', 'photo'));
+
+            foreach ($product->productAds as $ad) {
+                Ad::where('id', $ad->id)->update(['parent_status' => $request->is_active]);
+            }
 
 
             DB::commit();
@@ -133,19 +140,28 @@ class ProductController extends Controller
     public function changeStatus($id)
     {
         try {
-            $product = Product::find($id);
+            $product = Product::with(['productAds' => function ($q) {
+                $q->selection();
+            }])->find($id);
 
             if (!$product) {
                 return redirect()->route('admin.products')->with(['error' => 'هذا المنتج غير موجود']);
             }
-            $status = $product->is_active;
 
-            changeSts($status, $product);
+
+            $parent_status = $product->is_active;
+
+            $parent_status = $parent_status == 1 ? 0 : 1;
+            $product->update(['is_active' => $parent_status]);
+
+            foreach ($product->productAds as $ad) {
+                Ad::where('id', $ad->id)->update(['parent_status' => $parent_status]);
+            }
 
             return redirect()->route('admin.products')->with(['success' => 'تم تغيير حالة المنتج بنجاح']);
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.products')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
 
-        } catch (\Exception $exception) {
-            return redirect()->route('admin.products')->with(['error' => 'حدث خطأ ما برجاء المحاولة لاحقا']);
         }
     }
 

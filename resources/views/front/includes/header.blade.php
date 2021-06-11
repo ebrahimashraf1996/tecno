@@ -98,7 +98,20 @@
 
                                     </ul>
                                 </li>
-                            @else
+                            @elseif($list->id == 7)
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">{{$list->name}} <span
+                                            class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @foreach(\App\Models\Offer::active()->selection()->get() as $offer)
+                                            <li>
+                                                <a href="{{route('site.offer', $offer->id)}}">{{$offer->title}}  </a>
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+                                </li>
+                                @else
                                 <li><a href="{{route($list->slug)}}">{{$list->name}}</a></li>
                             @endif
                         @endforeach
@@ -108,3 +121,38 @@
         </nav>
     </div>
 </header>
+
+
+
+{{--@foreach(\App\Models\NavbarList::active()->selection()->get() as $list)--}}
+{{--    @if($list->name_en == 'Products')--}}
+{{--        <li class="dropdown">--}}
+{{--            <a class="dropdown-toggle" data-toggle="dropdown">{{$list->name}} <span--}}
+{{--                    class="caret"></span></a>--}}
+{{--            <ul class="dropdown-menu">--}}
+{{--                @foreach(\App\Models\Product::active()->selection()->get() as $product)--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('site.product', $product->id)}}">{{$product->title}}  </a>--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
+
+{{--            </ul>--}}
+{{--        </li>--}}
+{{--    @endif--}}
+{{--    @if ($list->name_en == 'Offers')--}}
+{{--        <li class="dropdown">--}}
+{{--            <a class="dropdown-toggle" data-toggle="dropdown">{{$list->name}} <span--}}
+{{--                    class="caret"></span></a>--}}
+{{--            <ul class="dropdown-menu">--}}
+{{--                @foreach(\App\Models\Offer::active()->selection()->get() as $offer)--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('site.offer', $offer->id)}}">{{$offer->title}}  </a>--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
+
+{{--            </ul>--}}
+{{--        </li>--}}
+{{--    @else--}}
+{{--        <li><a href="{{route($list->slug)}}">{{$list->name}}</a></li>--}}
+{{--    @endif--}}
+{{--@endforeach--}}
