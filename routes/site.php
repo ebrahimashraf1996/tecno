@@ -1,5 +1,5 @@
 <?php
-
+if (\Illuminate\Support\Facades\URL::current() == 'server-test.techno1egypt.com/*') {}
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
